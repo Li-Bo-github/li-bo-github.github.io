@@ -67,7 +67,7 @@ GitHub Pages 支持 React 的静态构建。此用户主页仓库部署在域名
 2. 将重构分支合并到 `main`。PR 阶段仅构建检查；`main` 更新后自动发布 `dist/`。
 3. 在 Actions 中确认 `Build and deploy React portfolio` 成功，然后访问 https://li-bo-github.github.io/ 。
 
-如需撤回，revert 本次提交并恢复原来的 Pages 发布来源设置。旧 MDB 的 css/js/scss 和 License.pdf 保留在仓库中用于历史兼容及版权说明，但不会进入新的 Vite 构建。
+如需撤回，revert 本次提交并恢复原来的 Pages 发布来源设置。旧版 MDB 模板文件已从仓库删除，需要时可在 git 历史中找回。
 
 ## 内容来源
 
