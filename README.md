@@ -17,7 +17,7 @@ pnpm dev
 
 | 内容                                             | 文件                          |
 | ------------------------------------------------ | ----------------------------- |
-| 个人简介、联系方式、工作、教育、技能、中英文文案 | `src/data/profile.js`         |
+| 个人简介、求职状态、首页文案、工作、教育、技能   | `src/data/profile.js`         |
 | 展示项目、AI 视频、研究、更多项目                | `src/data/projects.js`        |
 | 主题颜色、间距、移动端布局                       | `src/styles.css`              |
 | 页面区块顺序                                     | `src/App.jsx`                 |
@@ -26,8 +26,11 @@ pnpm dev
 | 最新 PDF 简历                                    | `public/resumes/`             |
 | 视频、封面、字幕                                 | `public/media/`               |
 | 自动构建和部署                                   | `.github/workflows/pages.yml` |
+| 404 页面、iOS 主屏图标                           | `public/404.html`、`public/apple-touch-icon.png` |
 
 语言优先级：链接参数 `?lang=en` / `?lang=zh` > 访客上次的选择 > 浏览器语言。
+
+首页的"正在寻找新机会"徽章由 `profile.status` 控制，设为 `null` 即隐藏。项目记录加 `hidden: true` 可暂时不显示（AI 影像卡片目前就是这样）。
 
 文案用 `text('中文', 'English')` 管理，不需要在组件里查找简历内容。新增项目只需在 `projects` 数组添加记录，使用唯一 `id`。
 
@@ -79,4 +82,4 @@ GitHub Pages 支持 React 的静态构建。此用户主页仓库部署在域名
 
 ## 验证范围
 
-`pnpm test` 检查双语字段、项目 ID、链接协议和静态资源路径；`pnpm build` 检查 React/Vite 生产构建。未提供真实视频，因此发布后的真实媒体还需自行确认浏览器解码、外链访问和字幕同步。
+`pnpm test` 检查双语字段、项目 ID、链接协议和静态资源路径；`pnpm build` 检查 React/Vite 生产构建，并把中文版首屏预渲染进 `dist/index.html`（搜索引擎和链接预览无需执行 JS 即可读到内容）。未提供真实视频，因此发布后的真实媒体还需自行确认浏览器解码、外链访问和字幕同步。

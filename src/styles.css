@@ -1,6 +1,9 @@
 /* Theme: change these tokens to restyle every section. */
 :root {
-  font-family: "DM Sans", "Noto Sans SC", sans-serif;
+  /* Latin from DM Sans; Chinese from system fonts (Google Fonts is unreliable in mainland China). */
+  font-family:
+    "DM Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
   color: #202720;
   background: #f6f7f2;
   font-synthesis: none;
@@ -112,6 +115,18 @@ main {
   background: #4c7454;
   border-radius: 50%;
   margin-right: 8px;
+}
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 18px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #354031;
 }
 .hello {
   font-size: 20px;
@@ -252,6 +267,18 @@ h2 {
 }
 .project-card:hover {
   transform: translateY(-3px);
+}
+/* An odd last card spans the row, art beside text, so the grid has no hole. */
+@media (min-width: 601px) {
+  .project-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-card:last-child:nth-child(odd) .project-art {
+    height: auto;
+    min-height: 245px;
+  }
 }
 .project-art {
   height: 245px;
