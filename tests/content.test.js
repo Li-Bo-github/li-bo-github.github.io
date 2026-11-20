@@ -53,6 +53,11 @@ test("project IDs are unique and linked resources are usable URLs", () => {
 test("required public assets exist", () => {
   for (const path of [
     "public/images/bo-li.jpg",
+    "public/images/bo-li.webp",
+    "public/robots.txt",
+    "public/sitemap.xml",
+    "public/apple-touch-icon.png",
+    "public/404.html",
     "public/resumes/bo-li-zh.pdf",
     "public/resumes/bo-li-bilingual.pdf",
     "public/favicon.svg",

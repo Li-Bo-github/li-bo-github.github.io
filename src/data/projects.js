@@ -1,5 +1,5 @@
 import { text } from "./profile.js";
-// Add a record to add a card. Optional media: { src, poster, captions, captionsLang }.
+// Add a record to add a card. Set hidden: true to keep a record off the page. Optional media: { src, poster, captions, captionsLang }.
 // Use public/media paths (e.g. /media/film.mp4) or an HTTPS video file URL.
 // Platform watch URLs belong in url, not media.src. Never invent project links.
 export const projects = [
@@ -27,6 +27,8 @@ export const projects = [
     tags: ["Generative AI", "Video"],
     visual: "motion",
     status: "coming-soon",
+    // Remove hidden once real work is added to media or url.
+    hidden: true,
     media: null,
     url: null,
   },

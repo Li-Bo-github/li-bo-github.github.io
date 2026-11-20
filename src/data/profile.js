@@ -7,6 +7,21 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/bo-li-7b6a10105/",
   instagram: "https://www.instagram.com/limbolavida/",
   title: text("软件工程师 · AI 探索者", "Software engineer · AI explorer"),
+  // Set status to null to hide the "open to opportunities" badge.
+  status: text("正在寻找新机会", "Open to opportunities"),
+  pageTitle: text(
+    "李博 Bo Li — 软件工程师 · AI 探索者",
+    "Bo Li — Software Engineer & AI Explorer",
+  ),
+  hello: text("你好，我是李博。", "Hi, I’m Bo Li."),
+  focus: ["FULL STACK", "CLOUD", "GENERATIVE AI"],
+  credentials: [
+    { name: "Amazon" },
+    { name: "UIUC", note: "MCS ’25" },
+    { name: "UW–Madison", note: "BS ’23" },
+  ],
+  resume: text("/resumes/bo-li-zh.pdf", "/resumes/bo-li-bilingual.pdf"),
+  portraitAlt: text("李博的照片", "Portrait of Bo Li"),
   headline: text("把想法，\n写成现实。", "Ideas into code.\nCode into impact."),
   intro: text(
     "专注于全栈开发、云基础设施与生成式 AI。从可靠的后端系统，到 AI 驱动的产品与影像，探索技术的更多可能。",
@@ -151,4 +166,10 @@ export const copy = {
     "This video could not be played. Try opening the original video.",
   ),
   openVideo: text("打开原视频", "Open video"),
+  skip: text("跳转到正文", "Skip to content"),
+  mainNav: text("主导航", "Main navigation"),
+  switchLang: text("Switch to English", "切换为中文"),
+  otherLang: text("EN", "中文"),
+  strip: text("工程 × 创造力", "ENGINEERING × CREATIVITY"),
+  backToTop: text("回到顶部", "Back to top"),
 };

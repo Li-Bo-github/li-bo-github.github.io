@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://li-bo-github.github.io/sitemap.xml

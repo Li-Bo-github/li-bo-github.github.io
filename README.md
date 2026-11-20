@@ -17,15 +17,20 @@ pnpm dev
 
 | 内容                                             | 文件                          |
 | ------------------------------------------------ | ----------------------------- |
-| 个人简介、联系方式、工作、教育、技能、中英文文案 | `src/data/profile.js`         |
+| 个人简介、求职状态、首页文案、工作、教育、技能   | `src/data/profile.js`         |
 | 展示项目、AI 视频、研究、更多项目                | `src/data/projects.js`        |
 | 主题颜色、间距、移动端布局                       | `src/styles.css`              |
 | 页面区块顺序                                     | `src/App.jsx`                 |
 | 可复用项目卡片、导航、经历区块、标题             | `src/components/`             |
-| 头像                                             | `public/images/bo-li.jpg`     |
+| 头像（同时更新同名 .webp）                       | `public/images/bo-li.jpg`     |
 | 最新 PDF 简历                                    | `public/resumes/`             |
 | 视频、封面、字幕                                 | `public/media/`               |
 | 自动构建和部署                                   | `.github/workflows/pages.yml` |
+| 404 页面、iOS 主屏图标                           | `public/404.html`、`public/apple-touch-icon.png` |
+
+语言优先级：链接参数 `?lang=en` / `?lang=zh` > 访客上次的选择 > 浏览器语言。
+
+首页的"正在寻找新机会"徽章由 `profile.status` 控制，设为 `null` 即隐藏。项目记录加 `hidden: true` 可暂时不显示（AI 影像卡片目前就是这样）。
 
 文案用 `text('中文', 'English')` 管理，不需要在组件里查找简历内容。新增项目只需在 `projects` 数组添加记录，使用唯一 `id`。
 
@@ -65,16 +70,16 @@ GitHub Pages 支持 React 的静态构建。此用户主页仓库部署在域名
 2. 将重构分支合并到 `main`。PR 阶段仅构建检查；`main` 更新后自动发布 `dist/`。
 3. 在 Actions 中确认 `Build and deploy React portfolio` 成功，然后访问 https://li-bo-github.github.io/ 。
 
-如需撤回，revert 本次提交并恢复原来的 Pages 发布来源设置。旧 MDB 的 css/js/scss 和 License.pdf 保留在仓库中用于历史兼容及版权说明，但不会进入新的 Vite 构建。
+如需撤回，revert 本次提交并恢复原来的 Pages 发布来源设置。旧版 MDB 模板文件已从仓库删除，需要时可在 git 历史中找回。
 
 ## 内容来源
 
 - 工作与教育信息以用户提供的《简历中文 - 李博.pdf》为主要来源，《resume bo 中英.pdf》补充英文表达。
 - Amazon 2025 的工作终止日期为 2025.12，没有标为在职；跨境事件采用中文版的 40,000+ 汇总口径。
 - Tharzen、ClaimTrust、其他研究和早期项目保留自原主页，并保留已有代码链接。
-- 下载入口提供用户提交的原始 PDF；两份 PDF 中电话号码和内容细节存在差异，文件未被改写。页面联系方式采用两份简历一致的邮箱。
+- 下载入口的 PDF 已删除电话号码（真正移除文字，不是覆盖），其余内容未改。页面联系方式只保留邮箱。更换简历时请先删掉电话再放入 `public/resumes/`。
 - 公共网站没有后端上传功能。手动修改数据、添加媒体、提交到 main 即可更新。
 
 ## 验证范围
 
-`pnpm test` 检查双语字段、项目 ID、链接协议和静态资源路径；`pnpm build` 检查 React/Vite 生产构建。未提供真实视频，因此发布后的真实媒体还需自行确认浏览器解码、外链访问和字幕同步。
+`pnpm test` 检查双语字段、项目 ID、链接协议和静态资源路径；`pnpm build` 检查 React/Vite 生产构建，并把中文版首屏预渲染进 `dist/index.html`（搜索引擎和链接预览无需执行 JS 即可读到内容）。未提供真实视频，因此发布后的真实媒体还需自行确认浏览器解码、外链访问和字幕同步。
