@@ -6,9 +6,24 @@ import Section from "./components/Section";
 import { copy, profile } from "./data/profile";
 import { projects, research, archive } from "./data/projects";
 
+// Priority: ?lang= link > saved choice > browser language. Default zh.
+function initialLang() {
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q === "zh" || q === "en") return q;
+  let saved = null;
+  try {
+    saved = localStorage.getItem("lang");
+  } catch {}
+  if (saved === "zh" || saved === "en") return saved;
+  return /^zh\b/i.test(navigator.language || "zh") ? "zh" : "en";
+}
+
 export default function App() {
-  const [lang, setLang] = useState("zh");
+  const [lang, setLang] = useState(initialLang);
   useEffect(() => {
+    try {
+      localStorage.setItem("lang", lang);
+    } catch {} // storage blocked (private mode): language just isn't remembered
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title =
       lang === "zh"
@@ -54,13 +69,16 @@ export default function App() {
             </div>
           </div>
           <figure className="portrait">
-            <img
-              src="/images/bo-li.jpg"
-              alt={lang === "zh" ? "李博的照片" : "Portrait of Bo Li"}
-              width="720"
-              height="900"
-              fetchPriority="high"
-            />
+            <picture>
+              <source srcSet="/images/bo-li.webp" type="image/webp" />
+              <img
+                src="/images/bo-li.jpg"
+                alt={lang === "zh" ? "李博的照片" : "Portrait of Bo Li"}
+                width="800"
+                height="800"
+                fetchPriority="high"
+              />
+            </picture>
             <figcaption>
               <span>BO LI / 李博</span>
               <span>ENGINEER & EXPLORER</span>

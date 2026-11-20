@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap");
-
 /* Theme: change these tokens to restyle every section. */
 :root {
   font-family: "DM Sans", "Noto Sans SC", sans-serif;
@@ -80,7 +78,8 @@ main {
   align-items: center;
   font-size: 14px;
 }
-.header nav a {
+.header nav a,
+.contact-link {
   padding: 12px 0;
 }
 .language {

@@ -22,10 +22,12 @@ pnpm dev
 | 主题颜色、间距、移动端布局                       | `src/styles.css`              |
 | 页面区块顺序                                     | `src/App.jsx`                 |
 | 可复用项目卡片、导航、经历区块、标题             | `src/components/`             |
-| 头像                                             | `public/images/bo-li.jpg`     |
+| 头像（同时更新同名 .webp）                       | `public/images/bo-li.jpg`     |
 | 最新 PDF 简历                                    | `public/resumes/`             |
 | 视频、封面、字幕                                 | `public/media/`               |
 | 自动构建和部署                                   | `.github/workflows/pages.yml` |
+
+语言优先级：链接参数 `?lang=en` / `?lang=zh` > 访客上次的选择 > 浏览器语言。
 
 文案用 `text('中文', 'English')` 管理，不需要在组件里查找简历内容。新增项目只需在 `projects` 数组添加记录，使用唯一 `id`。
 
